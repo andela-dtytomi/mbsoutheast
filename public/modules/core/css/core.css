@@ -1,0 +1,171 @@
+.content {
+	margin-top: 50px;
+}
+.undecorated-link:hover {
+	text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+.ng-invalid.ng-dirty{
+    border-color:#FA787E;
+}
+
+.ng-valid.ng-dirty{
+    border-color:#78FA89;
+}
+
+/****************
+    HEADER
+*****************/
+
+  header {
+
+  background: #fff;
+  width: 100%;
+  height: 76px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 4px solid #318D25;
+  z-index: 100;
+
+}
+
+#logo{
+
+  margin: 20px;
+  float: left;
+  width: 200px;
+  height: 40px;
+  background: url(../img/brand/mb.png) no-repeat center;
+  display: block;
+
+}
+
+nav {
+
+  float: right;
+  padding: 20px;  
+
+}
+
+#menu-icon {
+
+  display: hidden;
+  width: 40px;
+  height: 40px;
+   background: #CCCC00 url(../img/brand/icon_menu.png) center;
+}
+
+a:hover#menu-icon {
+
+  background-color: #FDF7F7;
+  border-radius: 4px 4px 0 0;
+
+}
+
+ul {
+
+  list-style: none;
+
+}
+
+li {
+
+  display: inline-block;
+  float: left;
+  padding: 10px
+
+}
+
+.current {
+
+  color: #2262AD;
+
+}
+
+/*MEDIA QUERY*/
+@media only screen and (max-width : 640px) {
+
+  header {
+
+    position: absolute;
+
+  }
+
+  #menu-icon {
+
+    display:inline-block;
+
+  }
+
+  nav ul, nav:active ul { 
+
+    display: none;
+    position: absolute;
+    padding: 20px;
+    background: #fff;
+    border: 5px solid #444;
+    right: 20px;
+    top: 60px;
+    width: 50%;
+    border-radius: 4px 0 4px 4px;
+
+  }
+
+  nav li {
+
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+
+  }
+
+  nav:hover ul {
+
+    display: block;
+
+  }
+/************
+    Slides
+*************/
+
+#slides_control > div{
+  height: 200px;
+}
+
+img{
+  margin:auto;
+  width: 400px;
+}
+
+#slides_control {
+  position:absolute;
+  width: 90px;
+  left:50%;
+  top:20px;
+ /*margin-left:-200px;*/
+}
+
+a {
+
+  color: #318D25;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+a:hover {
+
+  color: #444;
+
+}
+
+img {
+
+  width: 100%;
+
+}
