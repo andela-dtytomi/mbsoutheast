@@ -59,6 +59,12 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+
+	 profilePics: {
+        type: String
+        // required: 'A vaild CV is required'
+    },
+    
 	salt: {
 		type: String
 	},

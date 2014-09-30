@@ -1,0 +1,53 @@
+<section data-ng-controller="AdminController">
+  <aside id="sidebar" class="column">
+    <hr/>
+    <h3>Content
+      <div class="toggleLink">
+        <button ng-click="goEvent(0);">{{myVar[0] === 1 ? "Show" : "Hide"}}</button>
+      </div>
+    </h3>
+    <ul ng-hide="myVar[0] !== 0">
+      <li class="icn_new_article"><a href="/#!/admin/blog/create">New Article</a></li>
+      <li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+      <li class="icn_categories"><a href="#">Categories</a></li>
+      <li class="icn_tags"><a href="#">Tags</a></li>
+    </ul>
+    <h3>Users
+      <div class="toggleLink">
+         <button ng-click="goEvent(1);">{{myVar[1] === 1 ? "Show" : "Hide"}}</button>
+      </div>
+    </h3>
+    <ul ng-hide="myVar[1] !== 0">
+      <li class="icn_add_user"><a href="#">Add New User</a></li>
+      <li class="icn_view_users"><a href="#">View Users</a></li>
+      <li class="icn_profile"><a href="#">Your Profile</a></li>
+    </ul>
+    <h3>Media
+      <div class="toggleLink">
+        <button ng-click="goEvent(2);">{{myVar[2] === 1 ? "Show" : "Hide"}}</button>
+      </div>
+    </h3>
+    <ul ng-hide="myVar[2] !== 0">
+      <li class="icn_folder"><a href="#">File Manager</a></li>
+      <li class="icn_photo"><a href="#">Gallery</a></li>
+      <li class="icn_audio"><a href="#">Audio</a></li>
+      <li class="icn_video"><a href="#">Video</a></li>
+    </ul>
+    <h3>Admin
+      <div class="toggleLink">
+         <button ng-click="goEvent(3);">{{myVar[3] === 1 ? "Show" : "Hide"}}</button>
+      </div>
+    </h3>
+    <ul ng-hide="myVar[3] !== 0">
+      <li class="icn_settings"><a href="#">Options</a></li>
+      <li class="icn_security"><a href="#">Security</a></li>
+      <li class="icn_jump_back"><a href="#">Logout</a></li>
+    </ul>
+    
+    <footer>
+      <hr />
+      <p><strong>Copyright &copy; 2014 Website Admin</strong></p>
+      <p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+    </footer>
+  </aside><!-- end of sidebar -->
+</section>

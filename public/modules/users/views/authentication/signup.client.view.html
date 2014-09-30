@@ -1,54 +1,78 @@
 <section class="row" data-ng-controller="AuthenticationController">
-	<h3 class="col-md-12 text-center">Sign up using your social accounts</h3>
-	<div class="col-md-12 text-center">
-		<a href="/auth/facebook" class="undecorated-link">
-			<img src="/modules/users/img/buttons/facebook.png">
-		</a>
-		<a href="/auth/twitter" class="undecorated-link">
-			<img src="/modules/users/img/buttons/twitter.png">
-		</a>
-		<a href="/auth/google" class="undecorated-link">
-			<img src="/modules/users/img/buttons/google.png">
-		</a>
-		<a href="/auth/linkedin" class="undecorated-link">
-			<img src="/modules/users/img/buttons/linkedin.png">
-		</a>
-		<a href="/auth/github" class="undecorated-link">
-			<img src="/modules/users/img/buttons/github.png">
-		</a>
-	</div>
-	<h3 class="col-md-12 text-center">Or with your email</h3>
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
-		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
-			<fieldset>
-				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
-				</div>
-				<div class="form-group">
-					<label for="lastName">Last Name</label>
-					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
-				</div>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
-					<a href="/#!/signin" class="show-signup">Sign in</a>
-				</div>
-				<div data-ng-show="error" class="text-center text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
-	</div>
+       <form role="form" id="msform" name="userForm" data-ng-submit="signup()" novalidate autocomplete="off">
+       <!-- progressbar -->
+       <ul id="progressbar">
+         <li ng-repeat="step in steps" ng-class="{active: $index == getCurrentStepIndex()}"><a href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a></li>
+       </ul>
+       <div ng-switch on="selection">
+         <!-- Step 1 -->
+         <div ng-switch-when="Personal Details">
+            <fieldset>
+             <h2 class="fs-title">Personal Details</h2>
+             
+             <!-- First Name -->
+             <div class="form-group">
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required data-ng-model="user.firstName" />
+                <span ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine" class="help-block">Your first name is required.</span>
+             </div>
+
+             <!-- Last Name -->
+             <div class="form-group">
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" data-ng-model="user.lastName" required />
+                 <span ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Your last name is required.</span>
+              </div>
+
+              <!-- User Name -->
+             <div class="form-group">
+                <input type="text" id="username" name="username" ng-minlenght="5" placeholder="User Name" data-ng-model="user.username"/>
+                <span ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</span>
+             </div>
+             <div class="form-group">
+                  <input type="button" ng-disabled="userForm.fname.$invalid || userForm.lname.$invalid || userForm.username.$invalid" ng-click="incrementStep(user)" name="first_next" class="next action-button" value="Next" />
+             </div>
+             <div data-ng-show="error" class="text-center text-danger">
+                <strong data-ng-bind="error"></strong>
+             </div>
+            </fieldset>
+         </div>
+
+         <!-- Step 2 -->
+         <div ng-switch-when="Create your account">
+            <fieldset>
+             <h2 class="fs-title">Create your account</h2>
+             <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <input type="email" id="email" name="email" placeholder="Email" data-ng-model="user.email" />
+                <span ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</span>
+             </div>
+             <div class="form-group">
+                <input type="password"  placeholder="Password" data-ng-model="user.password" />
+                <input type="password" name="cpass" placeholder="Confirm Password" />
+             </div>
+             <div>
+               <input type="button" ng-class="{disabled: !hasPreviousStep()}" name="previous" ng-click="decrementStep()" value="Previous" class="next action-button" />
+               <input type="button" name="second_next" ng-disabled="userForm.$invalid" ng-class="{disabled: !hasNextStep()}" ng-click="incrementStep(user)" class="next action-button" value="Next" />
+             </div>
+              <div data-ng-show="error" class="text-center text-danger">
+                <strong data-ng-bind="error"></strong>
+             </div>
+            </fieldset>
+         </div>
+
+         <!-- Step 3 -->
+         <div ng-switch-when="Upload your Profile Picture">
+          <fieldset>
+           <h2 class="fs-title">Upload your Profile Picture</h2>
+           <input type="file" ng-file-select="onFileSelect($files)" multiple>
+            <div class="progress" style="margin-top: 20px;">
+               <div class="progress-bar" progress-bar="uploadProgress" role="progressbar">
+                 <span ng-bind="uploadProgress"></span>
+                 <span>%</span>
+               </div>
+             </div>
+            <input type="button" ng-class="{disabled: !hasPreviousStep()}" name="previous" ng-click="decrementStep()" value="Previous" class="next action-button"/>
+           <input type="submit" name="submit" class="submit action-button" ng-disabled="userForm.$invalid" ng-click="" value="Submit" />
+          </fieldset>
+         </div>
+       </div>
+     </form>
 </section>

@@ -9,41 +9,127 @@ var _ = require('lodash'),
 	passport = require('passport'),
 	User = mongoose.model('User');
 
+var uuid = require('node-uuid'),
+    multiparty = require('multiparty'),
+    async = require('async');
+
+var path = require('path'),
+    fs = require('fs');
+
+/**
+* Upload Image
+*/
+var uploadImage = function(req, res, contentType, tmpPath, destPath ) {
+    
+    // Server side file type checker.
+    if (contentType !== 'image/png' && contentType !== 'image/jpeg') {
+        fs.unlink(tmpPath);
+        return res.send(400, { 
+        	message: 'Unsupported file type. Only jpeg or png format allowed' 
+        });
+
+    } else
+    async.waterfall([
+            function (callback) {
+                fs.readFile(tmpPath , function(err, data){
+                    if (err) {
+                        var message = 'tmpPath doesn\'t exist.';
+                        return callback(message);
+                    }
+                    callback(null, data);
+                });             
+            },
+            function ( data, callback){
+
+                fs.writeFile(destPath, data, function(err) {
+                    if (err) {
+                        var message = 'Destination path doesn\'t exists';
+                        return callback(message);
+                    }
+                    callback();
+                });
+            },
+            function (callback) {
+                fs.unlink(tmpPath);
+            }
+        ],
+        function (err, results) {
+            if (err) {
+                res.send(500, { message: err });
+            }
+        }
+    );
+    
+};
+
 /**
  * Signup
  */
 exports.signup = function(req, res) {
-	// For security measurement we remove the roles from the req.body object
-	delete req.body.roles;
+	var form = new multiparty.Form();
+    form.parse(req, function(err, fields, files) {
 
-	// Init Variables
-	var user = new User(req.body);
-	var message = null;
+    	console.log(fields);
 
-	// Add missing user fields
-	user.provider = 'local';
-	user.displayName = user.firstName + ' ' + user.lastName;
+        if (err) {
+             res.send(500, {
+                message: err
+            });
+        } 
 
-	// Then save the user 
-	user.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			// Remove sensitive data before login
-			user.password = undefined;
-			user.salt = undefined;
+        if (files.file[0]) {
 
-			req.login(user, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.jsonp(user);
-				}
-			});
-		}
-	});
+            //if there is a file do upload
+            var file = files.file[0];
+            var contentType = file.headers['content-type'];
+            var tmpPath = file.path;
+            var extIndex = tmpPath.lastIndexOf('.');
+            var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+
+            // uuid is for generating unique filenames. 
+            var fileName = uuid.v4() + extension,
+                destPath =  'public/modules/core/img/server/tmp/' + fileName;         
+        }
+
+        // For security measurement we remove the roles from the req.body object
+		delete req.body.roles;
+		
+		// Init Variables
+		var user = new User(fields);
+		// console.log(user);
+
+		var message = null;
+
+        // Add missing user fields
+		user.provider = 'local';
+		user.displayName = user.firstName + ' ' + user.lastName;
+		user.profilePics = destPath;
+
+		console.log(user);
+
+		// Then save the user 
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				
+				uploadImage(req, res, contentType, tmpPath, destPath );
+				// Remove sensitive data before login
+				user.password = undefined;
+				user.salt = undefined;
+
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+    });
 };
 
 /**
