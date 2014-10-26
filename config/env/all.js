@@ -31,7 +31,8 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/underscore/underscore-min.js',
-				'public/lib/ng-file-upload/angular-file-upload.min.js'
+				'public/lib/ng-file-upload/angular-file-upload.min.js',
+				'public/lib/angular-scroll/angular-scroll.min.js'
 			]
 		},
 		css: [

@@ -37,11 +37,15 @@
 
   margin: 20px;
   float: left;
-  width: 200px;
-  height: 40px;
-  background: url(../img/brand/mb.png) no-repeat center;
   display: block;
 
+}
+
+#logo img{
+  position: absolute;
+  width: 140px;
+  left: 50px;
+  top: 10px;
 }
 
 nav {
@@ -84,6 +88,14 @@ li {
 
   color: #2262AD;
 
+}
+/****************
+  Footer
+*****************/
+.footer{
+  clear: both;
+  border-top: 4px solid #318D25;
+  height: 50px;
 }
 
 /*MEDIA QUERY*/
@@ -129,43 +141,3 @@ li {
     display: block;
 
   }
-/************
-    Slides
-*************/
-
-#slides_control > div{
-  height: 200px;
-}
-
-img{
-  margin:auto;
-  width: 400px;
-}
-
-#slides_control {
-  position:absolute;
-  width: 90px;
-  left:50%;
-  top:20px;
- /*margin-left:-200px;*/
-}
-
-a {
-
-  color: #318D25;
-  text-decoration: none;
-  font-weight: bold;
-
-}
-
-a:hover {
-
-  color: #444;
-
-}
-
-img {
-
-  width: 100%;
-
-}

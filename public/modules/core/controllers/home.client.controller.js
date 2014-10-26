@@ -1,12 +1,13 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication','$timeout',
+	function($scope, Authentication, $timeout) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
-		 $scope.myInterval = 5000;
+		 $scope.INTERVAL = 3000;
+
 		  var slides = $scope.slides = [
 		  		{
 			      image: '/modules/core/img/thumb.jpg'
@@ -21,5 +22,30 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			      image: '/modules/core/img/P2110387.jpg'
 			    }
 		  ];
+
+		  $scope.currentIndex = 0;
+
+		  $scope.setCurrentSlideIndex = function(index) {
+		  	$scope.currentIndex = index;
+		  };
+
+		  $scope.isCurrentSlideIndex = function(index) {
+		  	return $scope.currentIndex === index;
+		  };
+
+		   $scope.prevSlide = function () {
+	            $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+	        };
+
+	        $scope.nextSlide = function () {
+	            $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+	            $timeout($scope.nextSlide, $scope.INTERVAL);
+	        };
+
+	        function loadSlides() {
+	        	$timeout($scope.nextSlide, $scope.INTERVAL);
+	        };
+
+	        loadSlides();
 	}
 ]);

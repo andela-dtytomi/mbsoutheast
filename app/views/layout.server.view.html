@@ -45,11 +45,11 @@
 <body class="ng-cloak">
 	<header data-ng-include="'/modules/core/views/header.html'"></header>
 	<section class="content">
-		<section class="container">
+		<section>
 			{% block content %}{% endblock %}
 		</section>
 	</section>
-
+	<div class="footer" data-ng-include="'/modules/core/views/footer.html' "></div>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};

@@ -1,13 +1,15 @@
 <div data-ng-controller="HeaderController">
-    <a href="/#!/" id="logo"></a>
+    <a href="/#!/" id="logo">
+        <img src="modules/core/css/img/mblogo.jpg">
+    </a>
     <nav>
        <a href="#" id="menu-icon"></a>
         <ul data-ng-hide="authentication.user">
-            <li><a href="#" class="current">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Work</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#!/" class="current">Home</a></li>
+            <li><a href="#!/aboutus">About</a></li>
+            <li><a href="#!/services">Services</a></li>
+            <li><a href="#!/greentech">Green Tech</a></li>
+            <li><a href="#!/contact">Contact</a></li>
         </ul>
         <ul data-ng-show="authentication.user">
             <li><img ng-src={{user.profilePics}}>
