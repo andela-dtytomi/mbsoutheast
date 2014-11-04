@@ -1,52 +1,57 @@
 <section data-ng-controller="HomeController">
-	<div class="slider">
-		<img ng-repeat="slide in slides" class="slide"
-		ng-hide="!isCurrentSlideIndex($index)" src="{{slide.image}}">		
-	
-		<a class="arrow prev" href="#!" ng-click="nextSlide()"></a>
-	    <a class="arrow next" href="#!" ng-click="prevSlide()"></a>
+  <div class="slider">
+    <img ng-repeat="slide in slides" class="slide"
+    ng-hide="!isCurrentSlideIndex($index)" src="{{slide.image}}">   
+  
+    <a class="arrow prev" href="#!" ng-click="nextSlide()"></a>
+      <a class="arrow next" href="#!" ng-click="prevSlide()"></a>
 
-		<nav class="nav">
-	        <div class="wrapper">
-	            <ul class="dots">
-	                <li class="dot" ng-repeat="slide in slides">
-	                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-	                      ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-	            </ul>
-	        </div>
-	    </nav>
+    <nav class="nav">
+          <div class="wrapper">
+              <ul class="dots">
+                  <li class="dot" ng-repeat="slide in slides">
+                      <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                        ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
     </div>
-	<div class="container">
-		<p>
-			MB Southeast, LLC provides superior concrete contracting services throughout the southeastern United States, focusing on the multifamily housing construction industry.  We specialize in post-tension foundations and can meet all of your concrete needs.
-		</p>
-	</div>
-	<div class="container">
-		<div class="row">
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="/modules/core/img/thumb.jpg" alt="...">
-		      <div class="caption">
-		        <p>Our experience while working with MB Southeast was truly exceptional.   Michael and Jeff brought expertise, experience and knowledge of the latest technology that produced outstanding results. </p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="/modules/core/img/thumb.jpg" alt="...">
-		      <div class="caption">
-		        <p>They communicated well with all employees, were dependable, were always responsive to our needs, and addressed issues professionally.  From the smallest to the largest job, you can trust MB Southeast to deliver results.  You will be pleased with your decision to work with them.</p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="/modules/core/img/thumb.jpg" alt="...">
-		      <div class="caption">
-		        <p>Our experience while working with MB Southeast was truly exceptional.   Michael and Jeff brought expertise, experience and knowledge of the latest technology that produced outstanding results. </p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="padded-container">
+      <h1>About MB SouthEast</h1>
+      <p>
+      MB Southeast, LLC provides superior concrete contracting services throughout the southeastern United States, focusing on the multifamily housing construction industry.  We specialize in post-tension foundations and can meet all of your concrete needs. MB southeast strives for customer satisfaction by getting to know you, the details of your project and your expectations. We plan extensively up front and communicate frequently in order to deliver and on time and on budget projects. See what our customers have to say below. 
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row homebuttom">
+    <h1>Testimonials</h1>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="/modules/core/img/home/Home small 1 of 3.jpg" alt="..." style="height: 100px">
+          <div class="caption">
+            <p>"Michael and Jeff of MB Southeast brought in-depth knowledge and seasoned experience with the latest technologies in concrete. This made a measurable difference in a superior final product.”</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="/modules/core/img/thumb.jpg" alt="...">
+          <div class="caption">
+            <p>“MB Southeast communicated well with all employees. They were dependable, always responsive to our needs, and addressed issues professionally.”</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="/modules/core/img/thumb.jpg" alt="...">
+          <div class="caption">
+            <p>“From the smallest to the largest job, you can trust MB Southeast to deliver.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

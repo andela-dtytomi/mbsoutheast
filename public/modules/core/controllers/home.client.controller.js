@@ -10,7 +10,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		  var slides = $scope.slides = [
 		  		{
-			      image: '/modules/core/img/thumb.jpg'
+			      image: '/modules/core/img/home/Home 3of 3.jpg'
 			    },
 			    {
 			      image: '/modules/core/img/elevated-PT1.jpg'

@@ -1,19 +1,42 @@
-<section>
-        <div class="contactform">
-        <div id="wufoo-z7x3p9"><iframe id="wufooFormz7x3p9" class="wufoo-form-container" height="744" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="http://paravelinc.wufoo.com/embed/z7x3p9/def/embedKey=z7x3p9989171&amp;entsource=&amp;referrer=http%3Awuslashwuslashparavelinc.comwuslash">&lt;a href="http://paravelinc.wufoo.com/forms/z7x3p9/" title="html form"&gt;Fill out my Wufoo form!&lt;/a&gt;</iframe></div>
-<script type="text/javascript">var z7x3p9;(function(d, t) {
-var s = d.createElement(t), options = {
-'userName':'paravelinc',
-'formHash':'z7x3p9',
-'autoResize':true,
-'height':'616',
-'async':true,
-'header':'show'};
-s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
-s.onload = s.onreadystatechange = function() {
-var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-try { z7x3p9 = new WufooForm();z7x3p9.initialize(options);z7x3p9.display(); } catch (e) {}};
-var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-})(document, 'script');</script>
-        </div>
-    </section>
+<section class="topSpace container">
+	<div class="page-header">
+		<h1>Contact Form</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<form name="contactForm"class="form-horizontal" novalidate>
+				<div class="form-group">
+					<label for="exam">First Name</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="First Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exam">Last Name</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Last Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exam">Email</label>
+					<div class="input-group">
+						<div class="input-group-addon">@</div>
+						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="email" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exam">Comment</label>
+					<div class="controls">
+						<textarea name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
+				</div>
+			</form>
+		</div>  
+		<div class="col-md-6">
+			<img src="/modules/core/img/home/Home small 1 of 3.jpg" class="img-thumbnail">
+		</div>
+	</div>      
+</section>

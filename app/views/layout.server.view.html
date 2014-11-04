@@ -32,6 +32,8 @@
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
+	
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
@@ -49,7 +51,7 @@
 			{% block content %}{% endblock %}
 		</section>
 	</section>
-	<div class="footer" data-ng-include="'/modules/core/views/footer.html' "></div>
+	<div class ="footer" data-ng-include="'/modules/core/views/footer.html' "></div>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};

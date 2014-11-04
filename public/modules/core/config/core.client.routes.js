@@ -28,9 +28,21 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/contact',
 			templateUrl: 'modules/core/views/contact.form.html'
 		})
-		.state('posttensioning',{
-			url: '/posttension',
-			templateUrl: 'modules/core/views/posttensoning.html'
+		.state('poured walls',{
+			url: '/pouredwalls',
+			templateUrl: 'modules/core/views/poured.in.place.building.walls.html'
+		})
+		.state('Conventional Slab-on-Grade',{
+			url: '/slabongrade',
+			templateUrl: 'modules/core/views/slab.on.grade.html'
+		})
+		.state('Concrete and Steel structures ',{
+			url: '/candss',
+			templateUrl: 'modules/core/views/candss.html'
+		})
+		.state('Poured in Place Technical Site Walls',{
+			url: '/pinpt',
+			templateUrl: 'modules/core/views/pinpt.html'
 		});
 	}
 ]);

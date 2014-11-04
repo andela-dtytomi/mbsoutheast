@@ -1,10 +1,10 @@
 .slider {
     width: 100%;
-    height: 400px;
+    height: 500px;
     overflow: hidden;
     position: relative;
     background: #e6e6e6;
-    border: 20px solid #FFF;
+    /*border: 20px solid #FFF;*/
     margin-top: 20px;
 }
 
@@ -64,7 +64,7 @@ NAV
     position: absolute;
     z-index: 1002;
     left: 0;
-    bottom: -4px;
+    bottom: 18px;
     right: 0;
     height: 48px;
 }
@@ -100,13 +100,13 @@ NAV
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: #FFF;
-    border: 1px solid transparent;
+    background: transparent;
+    border: 1px solid #FFF;
     outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -120,6 +120,6 @@ NAV
 }
 
 .dots .dot a.active {
-    border-color: #FFF;
-    background-color: transparent;
+    border-color: transparent;
+    background-color: #FFF;
 }
