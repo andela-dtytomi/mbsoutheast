@@ -12,8 +12,7 @@ var ApplicationConfiguration = function () {
         'ui.router',
         'ui.bootstrap',
         'ui.utils',
-        'duScroll',
-        'angularFileUpload'
+        'duScroll'
       ];
     // Add a new vertical module
     var registerModule = function (moduleName, dependencies) {
