@@ -13,13 +13,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			      image: '/modules/core/img/home/Home 3of 3.jpg'
 			    },
 			    {
-			      image: '/modules/core/img/elevated-PT1.jpg'
+			      image: '/modules/core/img/home/Home 1 of 4.JPG'
 			    },
-			    // {
-			    //   image: '/modules/core/img/tensioned21.jpg'
-			    // },
 			    {
-			      image: '/modules/core/img/P2110387.jpg'
+			      image: '/modules/core/img/home/Home2 of 4.JPG'
 			    }
 		  ];
 
